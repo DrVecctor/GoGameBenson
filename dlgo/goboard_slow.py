@@ -22,6 +22,15 @@ class Move():
     def resign(cls):
         return Move(is_resign=True)
 
+    def __str__(self):
+        if self.is_pass:
+            return 'pass'
+        if self.is_resign:
+            return 'resign'
+        return 'play %s' % str(self.point)
+
+    __repr__ = __str__
+
 # Listing 3.4 Encoding strings of stones with set
 
 class GoString():
@@ -50,6 +59,18 @@ class GoString():
 
     def __eq__(self, other):
         return isinstance(other, GoString) and self.color == other.color and self.stones == other.stones and self.liberties == other.liberties
+
+    def __str__(self):
+        go_string_string = ('<String '+str(self.color)+' stones: ')
+        for stone in self.stones:
+            go_string_string += (str(stone)+' ')
+        go_string_string += 'liberties: '
+        for liberty in self.liberties:
+            go_string_string += (str(liberty)+' ')
+        go_string_string += '>'
+        return go_string_string
+
+    __repr__ = __str__
 
 # Listing 3.5 Creating a Go Board instance 
 
@@ -117,3 +138,15 @@ class Board():
         if string is None:
             return None
         return string
+
+    def __str__(self):
+        board_string = ('<Board '+str(self.num_rows)+'x'+str(self.num_cols)+' strings: ')
+        string_list = map(str,list(self._grid.values()))
+        string_list = list(dict.fromkeys(string_list))
+        for string in string_list:
+            board_string += (string+' ')
+        go_string_string += '>'
+        return board_string
+
+    __repr__ = __str__
+
