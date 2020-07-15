@@ -145,7 +145,7 @@ class Board():
         string_list = list(dict.fromkeys(string_list))
         for string in string_list:
             board_string += (string+' ')
-        go_string_string += '>'
+        board_string += '>'
         return board_string
 
     __repr__ = __str__
