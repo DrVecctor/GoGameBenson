@@ -28,5 +28,10 @@ class Point(namedtuple('Point', 'row col')):
         Point(self.row+1, self.col),
         Point(self.row, self.col-1),
         Point(self.row, self.col+1),
-]
+        ]
+
+    def __str__(self):
+        return '%s%d' % (COLS[self.col - 1], self.row)
+
+    __repr__ = __str__
 
