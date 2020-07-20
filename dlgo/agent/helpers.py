@@ -3,8 +3,7 @@ from dlgo.gotypes import Point
 
 def is_point_an_eye(board, point, color):
     if board.get(point) is not None:
-       return False
-
+        return False
     for neighbor in point.neighbors():
         if board.is_on_grid(neighbor):
             neighbor_color = board.get(neighbor)
@@ -16,7 +15,7 @@ def is_point_an_eye(board, point, color):
         Point(point.row - 1, point.col - 1),
         Point(point.row - 1, point.col + 1),
         Point(point.row + 1, point.col - 1),
-        Point(point.row + 1, point.col - 1),
+        Point(point.row + 1, point.col + 1),
 
     ]
     for corner in corners:

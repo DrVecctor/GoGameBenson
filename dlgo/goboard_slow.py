@@ -118,7 +118,7 @@ class Board():
                 neighbor_string = self._grid.get(neighbor)
                 if neighbor_string is None:
                     continue
-                if nieghbor_string is not string:
+                if neighbor_string is not string:
                     neighbor_string.add_liberty(point)
             self._grid[point] = None
 
